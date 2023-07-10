@@ -45,8 +45,8 @@ chain = load_qa_chain(llm, chain_type = "stuff")
 # if "messages" not in st.session_state:
 #     st.session_state["messages"] = [{"role": "assistant", "content": "Hi, I'm ResumeGPT, created by Ankit! I can assist you with answering any questions you may have with regards to Ankit's Professional experience. Some Examples: \n 1. What are the companies Ankit has worked for ? \n 2. How many years of experience does Ankit have ? \n 3. Where did Ankit complete his Master's from ? "}]
 
-message = st.chat_message("assistant")
-message.write("Hi, I'm ResumeGPT, created by Ankit! I can assist you with answering any questions you may have with regards to Ankit's Professional experience. Some Examples: \n 1. What are the companies Ankit has worked for ? \n 2. How many years of experience does Ankit have ? \n 3. Where did Ankit complete his Master's from ? ")
+messages = st.chat_message("assistant")
+messages.write("Hi, I'm ResumeGPT, created by Ankit! I can assist you with answering any questions you may have with regards to Ankit's Professional experience. Some Examples: \n 1. What are the companies Ankit has worked for ? \n 2. How many years of experience does Ankit have ? \n 3. Where did Ankit complete his Master's from ? ")
 
 if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
