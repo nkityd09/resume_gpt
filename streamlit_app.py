@@ -42,11 +42,7 @@ chain = load_qa_chain(llm, chain_type = "stuff")
 #docs = vectorstore.similarity_search(query)
 
 
-content = """Hi, I'm ResumeGPT, created by Ankit! I can assist you with answering any questions you may have with regards to Ankit's Professional experience. Some Examples:  
-    1. What are the companies Ankit has worked for ?
-    2. How many years of experience does Ankit have ?
-    3. Where did Ankit complete his Master's from ?
-    """
+content = "Hi, I'm ResumeGPT, created by Ankit! I can assist you with answering any questions you may have with regards to Ankit's Professional experience. Some Examples: \n 1. What are the companies Ankit has worked for ? \n 2. How many years of experience does Ankit have ? \n 3. Where did Ankit complete his Master's from ? "
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": content}]
