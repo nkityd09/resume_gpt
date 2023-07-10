@@ -39,7 +39,7 @@ chain = load_qa_chain(llm, chain_type = "stuff")
 
 
 #query = "What skills does Ankit Yadav have"
-docs = vectorstore.similarity_search(query)
+#docs = vectorstore.similarity_search(query)
 
 
 
