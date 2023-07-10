@@ -34,7 +34,7 @@ index = pinecone.Index('resume')
 vectorstore = Pinecone(index, embed.embed_query, text_field)
 #docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
     
-llm = OpenAI(temperature=0, openai_api_key=st.secrets[OPENAI_API_KEY])
+llm = OpenAI(temperature=0, openai_api_key=st.secrets["OPENAI_API_KEY"])
 chain = load_qa_chain(llm, chain_type = "stuff")
 
 
