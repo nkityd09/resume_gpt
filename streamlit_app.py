@@ -44,7 +44,7 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 while True:
-    if prompt := st.chat_input():
+    if prompt := st.chat_input(key = "Unique"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         docs = vectorstore.similarity_search(prompt)
