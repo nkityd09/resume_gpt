@@ -43,13 +43,13 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-while True:
-    if prompt := st.chat_input(key = "Unique"):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        st.chat_message("user").write(prompt)
-        docs = vectorstore.similarity_search(prompt)
-        response = chain.run(input_documents=docs, question=prompt)
-        #msg = response.choices[0].message
-        st.session_state.messages.append(response)
-        st.chat_message("assistant").write(response)
+
+if prompt := st.chat_input():
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
+    docs = vectorstore.similarity_search(prompt)
+    response = chain.run(input_documents=docs, question=prompt)
+    #msg = response.choices[0].message
+    st.session_state.messages.append(response)
+    st.chat_message("assistant").write(response)
 
