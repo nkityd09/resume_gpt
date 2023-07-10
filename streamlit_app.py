@@ -24,13 +24,14 @@ embed = OpenAIEmbeddings(
     model=model_name,
     openai_api_key=st.secrets["OPENAI_API_KEY"]
 )
+text_field = "text"
 
 pinecone.init(
     api_key=st.secrets["PINECONE_API_KEY"],
     environment=st.secrets["PINECONE_ENV"]
 )
 index = pinecone.Index('resume')
-vectorstore = Pinecone(index, embed.embed_query)
+vectorstore = Pinecone(index, embed.embed_query, text_field)
 #docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
     
 llm = OpenAI(temperature=0, openai_api_key=st.secrets[OPENAI_API_KEY])
