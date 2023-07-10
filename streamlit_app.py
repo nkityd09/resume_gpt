@@ -19,6 +19,11 @@ st.set_page_config(**PAGE_CONFIG)
 
 st.title("Ankit's ResumeGPT")
 
+model_name = 'text-embedding-ada-002'
+embed = OpenAIEmbeddings(
+    model=model_name,
+    openai_api_key=OPENAI_API_KEY
+)
 
 pinecone.init(
     api_key="PINECONE_API_KEY",
