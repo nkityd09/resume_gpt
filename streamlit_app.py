@@ -22,18 +22,18 @@ st.title("Ankit's ResumeGPT")
 model_name = 'text-embedding-ada-002'
 embed = OpenAIEmbeddings(
     model=model_name,
-    openai_api_key=OPENAI_API_KEY
+    openai_api_key=st.secrets["OPENAI_API_KEY"]
 )
 
 pinecone.init(
-    api_key="PINECONE_API_KEY",
-    environment="PINECONE_ENV"
+    api_key=st.secrets["PINECONE_API_KEY"],
+    environment=st.secrets["PINECONE_ENV"]
 )
 index = pinecone.Index('resume')
 vectorstore = Pinecone(index, embed.embed_query)
 #docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
     
-llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+llm = OpenAI(temperature=0, openai_api_key=st.secrets[OPENAI_API_KEY])
 chain = load_qa_chain(llm, chain_type = "stuff")
 
 
