@@ -34,7 +34,7 @@ st.title("ChatGPT")
 # vectorstore = Pinecone(index, embed.embed_query, text_field)
     
 llm = OpenAI(temperature=0, openai_api_key=st.secrets["OPENAI_API_KEY"])
-chain = load_qa_chain(llm, chain_type = "stuff")
+#chain = load_qa_chain(llm, chain_type = "stuff")
 
 
 if "messages" not in st.session_state:
@@ -48,7 +48,11 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     #docs = vectorstore.similarity_search(prompt)
-    response = chain.run(question=prompt)
+    response =  openai.ChatCompletion.create(
+        model="gpt-3.5-turbo-0613",
+        messages=prompt,
+        function_call="auto",  # auto is default, but we'll be explicit
+    )
     #response = chain.run(input_documents=docs, question=prompt)
     #msg = response.choices[0].message
     st.session_state.messages.append({"role": "assistant", "content": response})
